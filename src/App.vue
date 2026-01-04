@@ -10,6 +10,10 @@ import Header from './components/Header.vue'
 import Home from './pages/Home.vue'
 
 export default {
-  components: { Header, Home }
+  name: 'App',
+  components: {
+    Header,
+    Home
+  }
 }
 </script>

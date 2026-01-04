@@ -1,59 +1,47 @@
 <template>
-  <section id="section-2" class="section">
-    <div class="wrapper" ref="wrapper">
-      <div class="panel" v-for="n in 4" :key="n">
-        <h2>Panel {{ n }}</h2>
-      </div>
+  <section class="section">
+    <div class="inner">
+      <h2>Design</h2>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. A earum vero reiciendis enim reprehenderit dolores, perferendis animi nulla natus modi officia tenetur possimus minus blanditiis eveniet, non ipsa! Facilis, recusandae.
+      </p>
     </div>
   </section>
 </template>
 
 <script>
-import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-
-gsap.registerPlugin(ScrollTrigger)
-
 export default {
-  name: 'SectionTwo',
-  mounted() {
-    const panels = this.$el.querySelectorAll('.panel')
-
-    gsap.to(panels, {
-      xPercent: -100 * (panels.length - 1),
-      ease: 'none',
-      scrollTrigger: {
-        trigger: this.$el,
-        pin: true,
-        scrub: 1,
-        start: 'top top',
-        end: () => `+=${this.$el.offsetWidth}`
-      }
-    })
-  }
+  name: 'SectionTwo'
 }
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 .section {
-  height: 100vh;
-  overflow: hidden;
-}
-
-.wrapper {
-  display: flex;
-  width: 400vw;
-  height: 100%;
-}
-
-.panel {
-  width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: 3rem;
-  background: #111;
-  border-right: 1px solid #222;
+}
+
+.inner {
+  padding: 0 4rem;
+  max-width: 520px;
+}
+
+.label {
+  color: #9fb06b;
+  font-size: 14px;
+  display: block;
+  margin-bottom: 12px;
+}
+
+h2 {
+  font-size: 48px;
+  color: #c7ff3d;
+  margin-bottom: 16px;
+}
+
+p {
+  color: #9fb06b;
+  line-height: 1.6;
 }
 </style>

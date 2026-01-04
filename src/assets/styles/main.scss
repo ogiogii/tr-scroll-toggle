@@ -1,14 +1,180 @@
 @import './variables';
 @import './mixins';
 
-* {
+/* ===============================
+   GLOBAL
+================================ */
+body {
   margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  background: $bg-dark;
+  font-family: 'Inter', sans-serif;
 }
 
-body {
-  font-family: $font-main;
-  background: $black;
-  color: $white;
+/* ===============================
+   PINNED VISUAL (KANAN)
+================================ */
+.visual {
+  position: fixed;
+  top: 50%;
+  right: 4vw;
+  transform: translateY(-50%);
+
+  width: 50vw;        // ✅ SETENGAH LAYAR
+  height: 75vh;       // ✅ BESAR TAPI AMAN
+  max-width: 720px;   // biar ga kegedean di monitor gede
+
+  border-radius: $radius-lg;
+  overflow: hidden;
+  z-index: 5;
+
+  @include respond(tablet) {
+    position: relative;
+    width: 100%;
+    height: 60vh;
+    right: 0;
+    transform: none;
+    margin: 0 auto 4rem;
+  }
+
+  @include respond(mobile) {
+    height: 50vh;
+  }
 }
+
+.visual img.bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  opacity: 0;
+  transform: scale(1.05);
+  transition:
+    opacity 0.6s ease,
+    transform 0.8s ease;
+}
+
+.visual img.bg.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+
+.visual img.logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 120px;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+/* ===============================
+   SECTION TEXT
+================================ */
+.section {
+  min-height: 100vh;
+  padding: 4rem;
+  display: flex;
+  align-items: center;
+}
+
+.section h2 {
+  font-size: 3.2rem;
+  color: $lime;
+}
+
+.section p {
+  max-width: 420px;
+  color: $lime-soft;
+  line-height: 1.6;
+}
+
+/* ===============================
+   HEADER PLAN / DESIGN / BUILD
+================================ */
+.header-nav {
+  display: flex;
+  gap: 2rem;
+}
+
+.header-item {
+  position: relative;
+  cursor: pointer;
+  color: $lime-soft;
+}
+
+.header-item.active {
+  color: $lime;
+}
+
+.header-item::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 100%;
+  height: 2px;
+  background: $lime;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+
+.header-item.active::after {
+  transform: scaleX(1);
+}
+.zoom-sections {
+  position: relative;
+  height: 300vh; /* 3 step scroll */
+}
+
+.zoom-text-fixed {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  z-index: 3;
+  color: #c7ff3d;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 8vw;
+  max-width: 520px;
+}
+
+.zoom-text-fixed h1 {
+  font-size: 5rem;
+  font-style: italic;
+}
+
+.zoom-image-fixed {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.zoom-image-fixed img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.zoom-trigger {
+  height: 100vh;
+}
+.thank-you {
+  height: 100vh;
+  background: #0b1206;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.thank-you h1 {
+  color: #c7ff3d;
+  font-size: 3.5rem;
+  font-style: italic;
+}
+

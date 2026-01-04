@@ -1,48 +1,47 @@
 <template>
-  <section id="section-3" class="section">
-    <h2 ref="title">Thanks for Scrolling</h2>
-    <p ref="text">This section marks the end of the experience.</p>
+  <section class="section">
+    <div class="inner">
+      <h2>Build</h2>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi dolor aspernatur suscipit sapiente rerum ea nam, beatae et vero commodi impedit, blanditiis eligendi excepturi. Eligendi iure itaque illo quibusdam aliquam?
+      </p>
+    </div>
   </section>
 </template>
 
 <script>
-import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-
-gsap.registerPlugin(ScrollTrigger)
-
 export default {
-  name: 'SectionThree',
-  mounted() {
-    gsap.from([this.$refs.title, this.$refs.text], {
-      opacity: 0,
-      y: 60,
-      duration: 1,
-      stagger: 0.2,
-      scrollTrigger: {
-        trigger: this.$el,
-        start: 'top 75%'
-      }
-    })
-  }
+  name: 'SectionThree'
 }
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 .section {
   min-height: 100vh;
-  padding: 6rem 2rem;
-  background: #0e0e0e;
-  text-align: center;
+  display: flex;
+  align-items: center;
+}
+
+.inner {
+  padding: 0 4rem;
+  max-width: 520px;
+}
+
+.label {
+  color: #9fb06b;
+  font-size: 14px;
+  display: block;
+  margin-bottom: 12px;
 }
 
 h2 {
-  font-size: 3rem;
-  margin-bottom: 1rem;
+  font-size: 48px;
+  color: #c7ff3d;
+  margin-bottom: 16px;
 }
 
 p {
-  color: #aaa;
-  font-size: 1.2rem;
+  color: #9fb06b;
+  line-height: 1.6;
 }
 </style>

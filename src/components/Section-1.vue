@@ -1,65 +1,47 @@
 <template>
-  <section id="section-1" class="section">
-    <div class="inner" ref="box">
-      <h1 ref="title">Scroll Toggle</h1>
+  <section class="section">
+    <div class="inner">
+      <h2>Plan</h2>
+      <p>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officia, nisi illum. Eius nesciunt harum, minima soluta ea assumenda provident molestias dignissimos id. Quo deleniti veniam impedit debitis pariatur similique obcaecati!
+      </p>
     </div>
   </section>
 </template>
 
 <script>
-import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-
-gsap.registerPlugin(ScrollTrigger)
-
 export default {
-  name: 'SectionOne',
-  mounted() {
-    // Animasi teks masuk
-    gsap.from(this.$refs.title, {
-      opacity: 0,
-      y: 80,
-      duration: 1,
-      ease: 'power2.out',
-      scrollTrigger: {
-        trigger: this.$el,
-        start: 'top 70%'
-      }
-    })
-
-    // Pin section + animasi berdasarkan scroll
-    gsap.to(this.$refs.box, {
-      xPercent: 100,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: this.$el,
-        start: 'top top',
-        end: '+=100%',
-        scrub: true,
-        pin: true
-      }
-    })
-  }
+  name: 'SectionOne'
 }
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 .section {
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   align-items: center;
-  justify-content: center;
-  background-color: #0e0e0e;
-  overflow: hidden;
 }
 
 .inner {
-  width: 100%;
-  text-align: center;
+  padding: 0 4rem;
+  max-width: 520px;
 }
 
-h1 {
-  font-size: 4rem;
-  font-weight: 600;
+.label {
+  color: #9fb06b;
+  font-size: 14px;
+  display: block;
+  margin-bottom: 12px;
+}
+
+h2 {
+  font-size: 48px;
+  color: #c7ff3d;
+  margin-bottom: 16px;
+}
+
+p {
+  color: #9fb06b;
+  line-height: 1.6;
 }
 </style>
